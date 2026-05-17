@@ -1,1 +1,6 @@
-freebsd-ports/work-*
+# Free Ports generated files
+
+*/*/work-*
+*/*/README.html
+*.txz
+*.pkg
