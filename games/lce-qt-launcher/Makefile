@@ -25,7 +25,7 @@ USES=			python qt:6 shebangfix desktop-file-utils shared-mime-info
 USE_GITHUB=		yes
 GH_ACCOUNT=		xgui4
 GH_PROJECT=		LCE-Qt-Launcher
-GH_TAGNAME=		nightly
+GH_COMMITS=		dba4cdef4493a44027b998ef88f130078cf2208a
 
 SHEBANG_FILES=	scripts/*.sh
 
@@ -41,7 +41,7 @@ STEAM_DESC=		Enable Steam integration features
 WINE_RUN_DEPENDS=	wine:emulators/wine
 STEAM_RUN_DEPENDS=	steam:games/steam-utils
 
-post-install:
+install:
 	@${MKDIR} ${STAGEDIR}${ETCDIR}
 	@${MKDIR} ${STAGEDIR}${DESKTOPDIR}
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/mime/packages

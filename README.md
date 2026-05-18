@@ -2,6 +2,9 @@
 
 This repository contains Ports overlay for installing my softwares ports on FreeBSD.
 
+> [!CRITICAL]
+> This repo is currently in progress/developpement, so i do not recommend using it right now.
+
 ## Prerequisites: Set Up Poudriere & Create a Jail
 
 Before using this overlay, you need a Poudriere jail. Poudriere builds packages inside clean, isolated environments called jails.
