@@ -9,10 +9,8 @@ WWW=			https://github.com/xgui4/LCE-Qt-Launcher/
 LICENSE=		GPLv3
 LICENSE_FILE=	${WRKSRC}/license.md
 
-BUILD_DEPENDS=	bash:shells/bash \
-		git:devel/git \
-		${PYTHON_PKGNAMEPREFIX}hatchling>0:devel/py-hatchling@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}hatch>0:devel/py-hatch@${PY_FLAVOR}
+# Removed redundant hatch/git runtime dependencies from build block
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}hatchling>0:devel/py-hatchling@${PY_FLAVOR}
 
 RUN_DEPENDS=	bash:shells/bash \
 				git:devel/git \
@@ -25,14 +23,14 @@ USES=			python qt:6 shebangfix desktop-file-utils shared-mime-info
 USE_GITHUB=		yes
 GH_ACCOUNT=		xgui4
 GH_PROJECT=		LCE-Qt-Launcher
-GH_COMMITS=		dba4cdef4493a44027b998ef88f130078cf2208a
+GH_TAGNAME=		a35d6202a3f5e6d36217835ecafc24d2d1278c43
 
 SHEBANG_FILES=	scripts/*.sh
 
 USE_PYTHON=		autoplist pep517
 USE_QT=			tools:build
 
-OPTIONS_DEFINE=		WINE STEAM
+OPTIONS_DEFINE=		WINE STEAM DOCS
 OPTIONS_DEFAULT=	# Keep blank if you want them off by default
 
 WINE_DESC=		Enable Wine integration features
@@ -41,30 +39,34 @@ STEAM_DESC=		Enable Steam integration features
 WINE_RUN_DEPENDS=	wine:emulators/wine
 STEAM_RUN_DEPENDS=	steam:games/steam-utils
 
-install:
-	@${MKDIR} ${STAGEDIR}${ETCDIR}
-	@${MKDIR} ${STAGEDIR}${DESKTOPDIR}
-	@${MKDIR} ${STAGEDIR}${PREFIX}/share/mime/packages
+# Use post-install so the PEP-517 core engine runs FIRST.
+# Never use manual MKDIR commands; instead use INSTALL_DATA with -d equivalents implicitly, 
+# or use the framework's dedicated folder creation macros.
+post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/metainfo
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/128x128/apps
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/128x128/mimetypes
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 
 	${INSTALL_DATA} ${WRKSRC}/data/lce_qt_launcher.ini \
 		${STAGEDIR}${PREFIX}/etc/lce_qt_launcher.ini.sample
 
 	${INSTALL_DATA} ${WRKSRC}/packages/io.github.xgui4.lce_qt_launcher.desktop \
 		${STAGEDIR}${DESKTOPDIR}/io.github.xgui4.lce_qt_launcher.desktop
+
 	${INSTALL_DATA} ${WRKSRC}/packages/lce_inst-mime.xml \
 		${STAGEDIR}${PREFIX}/share/mime/packages/io.github.xgui4.lce_qt_launcher.xml
 
 	${INSTALL_DATA} ${WRKSRC}/packages/io.github.xgui4.lce_qt_launcher.metainfo.xml \
 		${STAGEDIR}${PREFIX}/share/metainfo/
+
 	${INSTALL_DATA} ${WRKSRC}/assets/io.github.xgui4.lce_qt_launcher.png \
 		${STAGEDIR}${PREFIX}/share/icons/hicolor/128x128/apps/
+
 	${INSTALL_DATA} ${WRKSRC}/assets/lce_inst.png \
 		${STAGEDIR}${PREFIX}/share/icons/hicolor/128x128/mimetypes/application-x-lce_inst.png
 
+post-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/readme.md ${WRKSRC}/code-of-conduct.md \
 		${STAGEDIR}${DOCSDIR}/
 

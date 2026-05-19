@@ -2,7 +2,7 @@
 
 This repository contains Ports overlay for installing my softwares ports on FreeBSD.
 
-> [!CRITICAL]
+> [!WARNING]
 > This repo is currently in progress/developpement, so i do not recommend using it right now.
 
 ## Prerequisites: Set Up Poudriere & Create a Jail
@@ -15,7 +15,7 @@ More info [on the manual page of poudriere](https://man.freebsd.org/cgi/man.cgi?
 Run this command to have Poudriere automatically download, extract, and create a jail (replace `14_1_RELEASE` and `14.1-RELEASE` with your target FreeBSD version):
 
 ```bash
-poudriere jail -c -j 14_1_RELEASE -v 14.1-RELEASE
+poudriere jail -c -j 14_3_RELEASE -v 14.3-RELEASE
 ```
 
 * `-c`: Creates the jail.
@@ -41,7 +41,7 @@ Follow these steps to register this overlay and build packages using Poudriere.
 Clone this repository to a local directory on your FreeBSD system:
 
 ```bash
-git clone https://github.com/xgui4/freebsd-ports.git /usr/local/xgui4-freebsd-ports
+git clone https://github.com/xgui4/freebsd-ports.git usr/local/xgui4-freebsd-ports
 ```
 
 ### 2. Register the Overlay in Poudriere
