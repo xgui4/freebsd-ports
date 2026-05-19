@@ -41,7 +41,7 @@ Follow these steps to register this overlay and build packages using Poudriere.
 Clone this repository to a local directory on your FreeBSD system:
 
 ```bash
-git clone https://github.com/xgui4/freebsd-ports.git usr/local/xgui4-freebsd-ports
+git clone https://github.com/xgui4/freebsd-ports.git /usr/local/xgui4-freebsd-ports
 ```
 
 ### 2. Register the Overlay in Poudriere
@@ -49,7 +49,7 @@ git clone https://github.com/xgui4/freebsd-ports.git usr/local/xgui4-freebsd-por
 Register this directory as a local ports tree inside Poudriere:
 
 ```bash
-poudriere ports -c -p xgui4-freebsd-ports -m null -M /usr/local/xgui4-freebsd-ports
+poudriere ports -c -p xgui4_freebsd_ports -m null -M /usr/local/xgui4-freebsd-ports
 ```
 
 ### 3. Build a Port

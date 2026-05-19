@@ -9,7 +9,6 @@ WWW=			https://github.com/xgui4/LCE-Qt-Launcher/
 LICENSE=		GPLv3
 LICENSE_FILE=	${WRKSRC}/license.md
 
-# Removed redundant hatch/git runtime dependencies from build block
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}hatchling>0:devel/py-hatchling@${PY_FLAVOR}
 
 RUN_DEPENDS=	bash:shells/bash \
@@ -39,9 +38,6 @@ STEAM_DESC=		Enable Steam integration features
 WINE_RUN_DEPENDS=	wine:emulators/wine
 STEAM_RUN_DEPENDS=	steam:games/steam-utils
 
-# Use post-install so the PEP-517 core engine runs FIRST.
-# Never use manual MKDIR commands; instead use INSTALL_DATA with -d equivalents implicitly, 
-# or use the framework's dedicated folder creation macros.
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/metainfo
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/128x128/apps
