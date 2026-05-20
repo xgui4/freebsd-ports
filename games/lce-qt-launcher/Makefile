@@ -1,39 +1,43 @@
-PORTNAME=		lce-qt-launcher
-DISTVERSION=	0.0.20.0-pre_alpha1
-CATEGORIES=		games python
+PORTNAME=			lce-qt-launcher
+PKGNAMEPREFIX=		${PYTHON_PKGNAMEPREFIX}
+DISTVERSION=		0.0.20.0-pre_alpha1
+PYBUILD_WHEEL_NAME=	lce_qt_launcher-0.0.20a0-py3
+CATEGORIES=			games python
 
-MAINTAINER=		xgui4-dev@example.com
-COMMENT=		Custom Free/Libre Minecraft Legacy Console Launcher
-WWW=			https://github.com/xgui4/LCE-Qt-Launcher/
+MAINTAINER=			xgui4-dev@example.com
+COMMENT=			Custom Free/Libre Minecraft Legacy Console Launcher
+WWW=				https://github.com/xgui4/LCE-Qt-Launcher/
 
-LICENSE=		GPLv3
-LICENSE_FILE=	${WRKSRC}/license.md
+LICENSE=			GPLv3
+LICENSE_FILE=		${WRKSRC}/license.md
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}hatchling>0:devel/py-hatchling@${PY_FLAVOR}
+BUILD_DEPENDS=		${PYTHON_PKGNAMEPREFIX}hatchling>0:devel/py-hatchling@${PY_FLAVOR} \
+					${PYTHON_PKGNAMEPREFIX}pyside6>0:devel/pyside6@${PY_FLAVOR} \
+					${PYTHON_PKGNAMEPREFIX}pyside6-tools>0:devel/pyside6-tools@${PY_FLAVOR}
 
-RUN_DEPENDS=	bash:shells/bash \
-				git:devel/git \
-				${PYTHON_PKGNAMEPREFIX}pyside6>0:devel/pyside6@${PY_FLAVOR} \
-				${PYTHON_PKGNAMEPREFIX}rich>0:textproc/py-rich@${PY_FLAVOR} \
-				${PYTHON_PKGNAMEPREFIX}vdf>0:devel/vdf@${PY_FLAVOR} \
-				${PYTHON_PKGNAMEPREFIX}platformdirs>0:devel/py-platformdirs@${PY_FLAVOR}
+RUN_DEPENDS=		bash:shells/bash \
+					git:devel/git \
+					${PYTHON_PKGNAMEPREFIX}pyside6>0:devel/pyside6@${PY_FLAVOR} \
+					${PYTHON_PKGNAMEPREFIX}rich>0:textproc/py-rich@${PY_FLAVOR} \
+					${PYTHON_PKGNAMEPREFIX}vdf>0:devel/vdf@${PY_FLAVOR} \
+					${PYTHON_PKGNAMEPREFIX}platformdirs>0:devel/py-platformdirs@${PY_FLAVOR}
 
-USES=			python qt:6 shebangfix desktop-file-utils shared-mime-info
-USE_GITHUB=		yes
-GH_ACCOUNT=		xgui4
-GH_PROJECT=		LCE-Qt-Launcher
-GH_TAGNAME=		a35d6202a3f5e6d36217835ecafc24d2d1278c43
+USES=				python shebangfix desktop-file-utils shared-mime-info
+USE_GITHUB=			yes
+GH_ACCOUNT=			xgui4
+GH_PROJECT=			LCE-Qt-Launcher
+GH_TAGNAME=			1d88f5bd5c931de55167b8c391e9e5ac7fb5d1e4
 
-SHEBANG_FILES=	scripts/*.sh
+SHEBANG_FILES=		scripts/*.sh
 
-USE_PYTHON=		autoplist pep517
-USE_QT=			tools:build
+USE_PYTHON=			autoplist pep517
 
 OPTIONS_DEFINE=		WINE STEAM DOCS
-OPTIONS_DEFAULT=	# Keep blank if you want them off by default
+OPTIONS_DEFAULT=	DOCS # Keep blank if you want them off by default
 
-WINE_DESC=		Enable Wine integration features
-STEAM_DESC=		Enable Steam integration features
+WINE_DESC=			Enable Wine integration features
+STEAM_DESC=			Enable Steam integration features
+DOCS_DESC=  		Install App Documentation
 
 WINE_RUN_DEPENDS=	wine:emulators/wine
 STEAM_RUN_DEPENDS=	steam:games/steam-utils

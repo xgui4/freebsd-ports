@@ -12,7 +12,7 @@ More info [on the manual page of poudriere](https://man.freebsd.org/cgi/man.cgi?
 
 ### 1. Create a Poudriere Jail
 
-Run this command to have Poudriere automatically download, extract, and create a jail (replace `14_1_RELEASE` and `14.1-RELEASE` with your target FreeBSD version):
+Run this command to have Poudriere automatically download, extract, and create a jail (replace `14_3_RELEASE` and `14.3-RELEASE` with your target FreeBSD version):
 
 ```bash
 poudriere jail -c -j 14_3_RELEASE -v 14.3-RELEASE
@@ -57,7 +57,7 @@ poudriere ports -c -p xgui4_freebsd_ports -m null -M /usr/local/xgui4-freebsd-po
 To build a package from this overlay, use the `-O` flag to layer it on top of your main ports tree:
 
 ```bash
-poudriere bulk -j <jail_name> -p <main_ports_tree> -O xgui4-freebsd-ports <category>/<port_name>
+poudriere bulk -j <jail_name> -p <main_ports_tree> -O xgui4_freebsd_ports <category>/<port_name>
 ```
 
 *(Replace `<jail_name>`, `<main_ports_tree>`, and `<category>/<port_name>` with your actual configuration environment).*
