@@ -1,7 +1,6 @@
 PORTNAME=			lce-qt-launcher
 PKGNAMEPREFIX=		${PYTHON_PKGNAMEPREFIX}
 DISTVERSION=		0.0.20.0-pre_alpha1
-PYBUILD_WHEEL_NAME=	lce_qt_launcher-0.0.20a0-py3
 CATEGORIES=			games python
 
 MAINTAINER=			xgui4-dev@example.com
@@ -31,6 +30,7 @@ GH_TAGNAME=			1d88f5bd5c931de55167b8c391e9e5ac7fb5d1e4
 SHEBANG_FILES=		scripts/*.sh
 
 USE_PYTHON=			autoplist pep517
+PEP517_WHEEL_NAME=  lce_qt_launcher-0.0.20a0
 
 OPTIONS_DEFINE=		WINE STEAM DOCS
 OPTIONS_DEFAULT=	DOCS # Keep blank if you want them off by default
