@@ -1,7 +1,8 @@
 PORTNAME=			lce-qt-launcher
-PKGNAMEPREFIX=		${PYTHON_PKGNAMEPREFIX}
 PORTVERSION=		0.0.20a0
+PORTREVISION= 		2
 CATEGORIES=			games python
+PKGNAMEPREFIX=		${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=			xgui4-dev@example.com
 COMMENT=			Custom Free/Libre Minecraft Legacy Console Launcher
