@@ -1,0 +1,11 @@
+A noefetch-inspired utility that fetch you system info with a OS-Tan
+
+This is a work in progress experimental cross-platfrom version of xgui4/wpfetch
+Dependancy/Library needed
+
+    GUI (Unix Like system only for now)
+        QT 6
+    CLI
+        lfreist/hwinfo
+            License : MIT
+        Curses
