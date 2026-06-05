@@ -45,7 +45,7 @@ STEAM_RUN_DEPENDS=	steam:games/steam-utils
 
 PLIST_FILES=	etc/lce_qt_launcher.ini.sample \
 		share/applications/io.github.xgui4.lce_qt_launcher.desktop \
-		share/applications/lce-content-intstaller.desktop \
+		share/applications/lce-content-installer.desktop \
 		share/mime/packages/io.github.xgui4.lce_qt_launcher.xml \
 		share/icons/hicolor/128x128/apps/io.github.xgui4.lce_qt_launcher.png \
 		share/icons/hicolor/128x128/mimetypes/application-x-lce_inst.png \
@@ -54,7 +54,6 @@ PLIST_FILES=	etc/lce_qt_launcher.ini.sample \
 PORTDOCS=	code-of-conduct.md readme.md
 
 post-install:
-	@${MKDIR} ${STAGEDIR}${PREFIX}/share/metainfo
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/mime/packages
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/128x128/apps
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/128x128/mimetypes
